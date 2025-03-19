@@ -13,15 +13,10 @@ app.use(cors({
     origin: 'http://localhost:3000'  // Allow requests from frontend
   }));
 
-mongoose
-.connect(process.env.MONGO_URL, {
-    useNewUrlParser:true , 
-    useUnifiedTopology: true
- })
-.then(()=>{
-    console.log("MongoDB Connected!");
-})
-.catch((err) => console.log(err));
+  mongoose.connect(process.env.MONGO_URL)
+  .then(() => console.log("MongoDB Connected!"))
+  .catch(err => console.log(err));
+
 
 app.use("/api/users" , userRoute);
 app.use("/api/pins" , pinRoute);

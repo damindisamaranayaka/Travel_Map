@@ -1,4 +1,3 @@
-//import React from 'react';
 import React, { useState, useEffect } from 'react'; 
 import Map, { Marker, Popup } from 'react-map-gl';
 import mapboxgl from 'mapbox-gl';
@@ -11,7 +10,6 @@ import { format } from 'timeago.js';
 import Register from './components/Register';
 import Login from './components/Login';
 
-// Mapbox token
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX;
 
 function App() {
@@ -26,13 +24,13 @@ function App() {
   const [showRegister, setShowRegister] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
 
-  // Fetch pins from the backend
+
   useEffect(() => {
     const getPins = async () => {
       try {
         const res = await axios.get("http://localhost:8800/api/pins");
         const validPins = res.data.filter(pin => !isNaN(pin.lat) && !isNaN(pin.long));
-        setPins(validPins); // Set only valid pins
+        setPins(validPins);
       } catch (err) {
         console.log(err);
       }
@@ -45,11 +43,11 @@ function App() {
     setCurrentPlaceId(id);
   };
 
-  // Handle double-click to add a new place
+
   const handleAddClick = (e) => {
     const { lng, lat } = e.lngLat;
 
-    // Ensure the lng/lat values are valid numbers
+ 
     if (!isNaN(lng) && !isNaN(lat)) {
       setNewPlace({
         lat: lat,

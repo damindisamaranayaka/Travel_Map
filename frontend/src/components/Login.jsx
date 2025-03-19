@@ -16,7 +16,7 @@ export default function Login({setShowLogin, myStorage, setCurrentUser}) {
             password:passwordRef.current.value,
         };
 
-        console.log(user); // Log the input values for verification
+        console.log(user);
     
     try{
         const res= await axios.post("http://localhost:8800/api/users/login", user);
@@ -26,7 +26,7 @@ export default function Login({setShowLogin, myStorage, setCurrentUser}) {
         setsError(false);
     } catch(err) {
         setsError(true);
-        console.error(err); // Log the error for better visibility
+        console.error(err); 
     }
     };
 
